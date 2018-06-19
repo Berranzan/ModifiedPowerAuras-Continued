@@ -19,25 +19,25 @@ range and ready to be casted/performed.
 Consider the case of Judgement spell, we want to have aura show us 
 when the spell is ready to be casted 
 (we have active Seal and it's not on 
-cooldown) target is in range and target is an enemy. Original Mpowa 
+cooldown), target is in range and target is an enemy. Original Mpowa 
 will 
 have only one check: if spell is on cooldown. It means that (Inverted On 
 Cooldown) aura will be shown 
-even if you don't have Seal active, you are 
+even if you don't have a Seal active, you are 
 not targeting anything or targeting friendly or dead target or 
 targeting 
-an enemy out of range. Instead of performing check on the spell book only 
+an enemy out of range. Instead of performing check on the spell book only, 
 we have to do additional 
 checks, some of them on the Action Bar slots. In 
-order to identify which Action Bar slot we are interested 
+order to identify which Action Bar slot we are interested in
 we compare 
-textures from spell book with textures on the Action Bar until we find a 
+textures from the spell book with textures on the Action Bar until we find a 
 match. For this reason, 
 spell you are interested in must be placed on one 
 of the Action bars. Checks for spells can be performed on 
 every update 
 which is preferred option as you can move spells freely on the Action 
-Bars and Mpowa fill find it, 
+Bars and Mpowa will find it, 
 or if you have performance problems you can 
 choose to uncheck Auto Update but then you have to reset UI by 
 issuing 
