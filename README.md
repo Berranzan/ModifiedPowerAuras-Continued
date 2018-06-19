@@ -1,11 +1,20 @@
 # ModifiedPowerAurasContinued
-	This is continuation of this work: 
+
+
+This is continuation of this work: 
+
+
 https://github.com/Geigerkind/ModifiedPowerAuras
+
+
 	Many thanks to original developer of Power Auras as well as the 
 creator of Modified Power Auras.
-	ModifedPowerAuras (Mpowa) is a great addon, but it falls short in 
+	
+ModifedPowerAuras (Mpowa) is a great addon, but it falls short in 
 one important aspect: showing aura when action or spell is available, in 
 range and ready to be casted/performed.
+
+
 	Consider the case of Judgement spell, we want to have aura show us 
 when the spell is ready to be casted (we have active Seal and it's not on 
 cooldown) target is in range and target is an enemy. Original Mpowa will 
@@ -24,6 +33,8 @@ choose to uncheck Auto Update but then you have to reset UI by issuing
 RESETUI command every time you move or create another aura that tracks if 
 spell is available. I don't see any performance hit on my computer from 
 using Auto Update feature, but your millage may vary.
+
+
 	I have tried to preserve most of previous functionality so instead 
 of having Action Available button you have to check two boxes, "Ability 
 not ready" which is original "On cooldown" checkbox with additional 
