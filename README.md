@@ -42,9 +42,10 @@ or if you have performance problems you can
 choose to uncheck Auto Update but then you have to reset UI by 
 issuing 
 RESETUI command every time you move or create another aura that tracks if 
-spell is available. I don't see
- any performance hit on my computer from 
-using Auto Update feature, but your millage may vary.
+spell is available, or check 
+Auto Update briefly and then uncheck it again. I don't see any performance hit on my computer from 
+using Auto Update 
+feature, but your millage may vary.
 
 
 I have tried to preserve most of previous functionality so instead 
