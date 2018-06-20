@@ -116,6 +116,11 @@ function MPOWA:OnUpdate(elapsed)
 										self:FHide(cat)
 									end
 								end
+								if path["stance"] and MPOWA:GetStanceSlot(this)==path["stanceslot"] then
+									self:FHide(cat)
+								else
+									self:FShow(cat)
+								end
 							end
 						end
 					else
