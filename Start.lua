@@ -15,6 +15,8 @@ function MPOWA:CreateSave(i)
 		test = false,
 		cooldown = false,
 		enemyonly = false,
+		stance = false,
+		stanceslot=1,
 		autoupdate = false,
 		spellslot = 1,
 		enemytarget = false,
@@ -114,7 +116,19 @@ function MPOWA:Init()
 				self.SAVE[cat]["spellslot"] = 1
 			end
 
-			MPOWA:SpellSlot(cat, val)
+			if not val["stanceslot"] then
+				self.SAVE[cat]["stanceslot"] = 1
+			end
+
+			if not val["stance"] then
+				self.SAVE[cat]["stance"] = false
+			end
+
+			if not val["enemyonly"] then
+				self.SAVE[cat]["enemyonly"] = false
+			end
+
+			MPOWA:SpellSlot(val)
 
 			if (val["inverse"] or val["cooldown"]) and val["buffname"] ~= "unitpower" then
 				self.NeedUpdate[cat] = true
@@ -261,7 +275,7 @@ function MPOWA:Init()
 
 	self.testAll = false
 end
-function MPOWA:SpellSlot(cat, val)
+function MPOWA:SpellSlot(val)
 	if val["buffname"] and val["spellslot"] then
 		val["spellslot"] = 1
 		local spellIndex = 1
@@ -286,6 +300,30 @@ function MPOWA:SpellSlot(cat, val)
 			end
 		return
 	end
+end
+function MPOWA:StanceSlot(val)
+	if self.SAVE[self.CurEdit]["stance"] then
+		MPOWA.SAVE[MPOWA.CurEdit]["stanceslot"] = 0;
+		for i=1,6 do
+			local icon, name, active, castable = GetShapeshiftFormInfo(i);
+			if active then
+				MPOWA.SAVE[MPOWA.CurEdit]["stanceslot"] = i;
+				--DEFAULT_CHAT_FRAME:AddMessage("Action Bar= " .. MPOWA.SAVE[MPOWA.CurEdit]["stanceslot"])
+			end
+		end
+	end
+	--self:Iterate("player")
+	--self:Push("Windfury", "player", 42, false, "Windfury")
+	return MPOWA.SAVE[MPOWA.CurEdit]["stanceslot"]
+end
+function MPOWA:GetStanceSlot(val)
+	for i=1,6 do
+		local icon, name, active, castable = GetShapeshiftFormInfo(i);
+		if active then
+			return i
+		end
+	end
+	return 0
 end
 --------------- Post Init --------------------------
 

@@ -508,7 +508,7 @@
 	---------------------------------------------CONFIGURATION FRAME---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	<Frame name="MPowa_ConfigFrame" movable="true" parent="MPowa_MainFrame" frameStrata="HIGH" hidden="true" enableMouse="true" enableKeyboard="true">
-		<Size x="321" y="480" />
+		<Size x="321" y="510" />
 		<Anchors>
 			<Anchor point="RIGHT" relativeTo="MPowa_MainFrame" relativePoint="LEFT" />
         </Anchors>
@@ -546,8 +546,8 @@
 		</Layers>
 		<Scripts>
 			<OnLoad>
-				getglobal(this:GetName().."_HEAD"):SetText(MPOWA_CONFIGFRAME_NAME)
-			</OnLoad>
+        getglobal(this:GetName().."_HEAD"):SetText(MPOWA_CONFIGFRAME_NAME)
+      </OnLoad>
 			<OnKeyDown>
 				if IsShiftKeyDown() and IsAltKeyDown() then
 					MPowa_ConfigFrame_Container_1_Slider_PosX:SetValueStep(0.1)
@@ -932,6 +932,29 @@
                   </OnValueChanged>
                 </Scripts>
               </Slider>
+              <Slider name="$parent_Slider_StanceSlot" inherits="MPowa_SliderTemplate" hidden="true">
+                <Anchors>
+                  <Anchor point="RIGHT" relativeTo="$parent_Slider_PosY" relativePoint="LEFT">
+                    <Offset x="-10" y="0" />
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                    this.aide = MPOWA_SLIDER_SIZE_TOOLTIP
+                    this:SetMinMaxValues(1,12)
+                    this:SetValue(1)
+                    this:SetValueStep(1)
+                    getglobal(this:GetName().."Text"):SetText(MPOWA_SLIDER_SIZE)
+                    getglobal(this:GetName().."Low"):SetText("1")
+                    getglobal(this:GetName().."High"):SetText("12")
+                  </OnLoad>
+                  <OnValueChanged>
+                    if MPOWA.loaded then
+                    MPOWA:SliderChange("stanceslot", this, MPOWA_SLIDER_SIZE)
+                    end
+                  </OnValueChanged>
+                </Scripts>
+              </Slider>
 						</Frames>
 					</Frame>
 					<Frame name="$parent_1_2">
@@ -1287,6 +1310,24 @@
                   </OnLoad>
                   <OnClick>
                     MPOWA:Checkbutton("enemyonly")
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+              <CheckButton name="$parent_Checkbutton_Stance" inherits="MPowa_CheckTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="$parent_Checkbutton_EnemyOnly" relativePoint="BOTTOMLEFT">
+                    <Offset x="0" y="11" />
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                    this.tooltipText = MPOWA_CHECKBUTTON_STANCE_TOOLTIP
+                    getglobal(this:GetName().."Text"):SetText(MPOWA_CHECKBUTTON_STANCE)
+                    this.var = "stance"
+                  </OnLoad>
+                  <OnClick>
+                    MPOWA:StanceCheckbutton(this,"stance")
+                    MPOWA:StanceSlot(this)
                   </OnClick>
                 </Scripts>
               </CheckButton>

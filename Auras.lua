@@ -26,6 +26,7 @@ local GetInventoryItemLink = GetInventoryItemLink
 local GetContainerNumSlots = GetContainerNumSlots
 local GetSpellName = GetSpellName
 local UnitIsFriend = UnitIsFriend
+local Stance = Stance
 local UpdateTime, LastUpdate = 0.05, 0
 local path, duration, text, count, time
 
@@ -95,6 +96,11 @@ function MPOWA:OnUpdate(elapsed)
 									if inRange == 0 or not isUsable then
 										self:FHide(cat)
 									end
+								end
+								if path["stance"] and MPOWA:GetStanceSlot(this)==path["stanceslot"] then
+									self:FShow(cat)
+								else
+									self:FHide(cat)
 								end
 							else
 								if path["secsleft"] then
