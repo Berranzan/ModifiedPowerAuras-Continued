@@ -97,10 +97,12 @@ function MPOWA:OnUpdate(elapsed)
 										self:FHide(cat)
 									end
 								end
-								if path["stance"] and MPOWA:GetStanceSlot(this)==path["stanceslot"] then
-									self:FShow(cat)
-								else
-									self:FHide(cat)
+								if path["stance"] then
+									if MPOWA:GetStanceSlot(this)==path["stanceslot"] then
+										self:FShow(cat)
+									else
+										self:FHide(cat)
+									end
 								end
 							else
 								if path["secsleft"] then
@@ -116,10 +118,12 @@ function MPOWA:OnUpdate(elapsed)
 										self:FHide(cat)
 									end
 								end
-								if path["stance"] and MPOWA:GetStanceSlot(this)==path["stanceslot"] then
-									self:FHide(cat)
-								else
-									self:FShow(cat)
+								if path["stance"] then
+									if MPOWA:GetStanceSlot(this)==path["stanceslot"] then
+										self:FHide(cat)
+									else
+										self:FShow(cat)
+									end
 								end
 							end
 						end
