@@ -76,12 +76,14 @@ function MPOWA:OnUpdate(elapsed)
 								self.frames[cat][3]:Hide()
 							end
 						else
-							if path["inverse"] then
-								if duration > 0 then
-									self:FHide(cat)
-								else
-									self:FShow(cat)
-								end
+						---[[
+							if duration > 0 then
+								self:FHide(cat)
+							else
+								self:FShow(cat)
+							end
+								--]]
+							if path["abilityavailable"]then
 								local action_slot = path["spellslot"]
 								if path["autoupdate"] then
 									action_slot = self:GetSpellActionSlot(path["buffname"])
@@ -89,19 +91,67 @@ function MPOWA:OnUpdate(elapsed)
 								local inRange = IsActionInRange(action_slot)
 								local isUsable, notEnoughMana = IsUsableAction(action_slot)
 								if path["enemyonly"] then
-									if inRange == 0 or not UnitCanAttack("player", "target") or UnitIsDead("target") or not isUsable then
-										self:FHide(cat)
+									if not path["inverse"] then
+										if inRange == 0 or not UnitCanAttack("player", "target") or UnitIsDead("target") or not isUsable then
+											self:FHide(cat)
+										end
+									else
+										if duration > 0 then
+											self:FShow(cat)
+										end
+										if not (inRange == 0) and UnitCanAttack("player", "target") and isUsable then
+											self:FHide(cat)
+										end
 									end
+										--[[
+										if not isUsable then
+											DEFAULT_CHAT_FRAME:AddMessage("Not Usable  " .. action_slot)
+										end
+										if inRange == 0 then
+											DEFAULT_CHAT_FRAME:AddMessage("Out of Range" .. action_slot)
+										else
+											DEFAULT_CHAT_FRAME:AddMessage("In Range" .. action_slot)
+										end
+										if not UnitCanAttack("player", "target") then
+											DEFAULT_CHAT_FRAME:AddMessage("Can't attack that target" .. action_slot)
+										end
+										if  UnitIsDead("target") then
+											DEFAULT_CHAT_FRAME:AddMessage("Unit is dead" .. action_slot)
+										end
+										--]]
+									--end
 								else
 									if inRange == 0 or not isUsable then
+										if not path["inverse"] then
+											self:FHide(cat)
+										else
+											self:FShow(cat)
+										end
+										--DEFAULT_CHAT_FRAME:AddMessage("Not available")
+									end
+								end
+								--[[
+								if duration > 0 then
 										self:FHide(cat)
+										--DEFAULT_CHAT_FRAME:AddMessage("Hide")
+									else
+										self:FShow(cat)
+								end
+								--]]
+							end
+							if path["inverse"] then
+								if not path["abilityavailable"]then
+									if duration > 0 then
+										self:FHide(cat)
+									else
+										self:FShow(cat)
 									end
 								end
 								if path["stance"] then
 									if MPOWA:GetStanceSlot(this)==path["stanceslot"] then
-										self:FShow(cat)
-									else
 										self:FHide(cat)
+									else
+										self:FShow(cat)
 									end
 								end
 							else
@@ -112,17 +162,19 @@ function MPOWA:OnUpdate(elapsed)
 										self:FHide(cat)
 									end
 								else
-									if duration > 0 then
-										self:FShow(cat)
-									else
-										self:FHide(cat)
+									if not path["abilityavailable"]then
+										if duration > 0 then
+											self:FShow(cat)
+										else
+											self:FHide(cat)
+										end
 									end
 								end
 								if path["stance"] then
 									if MPOWA:GetStanceSlot(this)==path["stanceslot"] then
-										self:FHide(cat)
-									else
 										self:FShow(cat)
+									else
+										self:FHide(cat)
 									end
 								end
 							end

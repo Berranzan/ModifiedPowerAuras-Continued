@@ -14,6 +14,7 @@ function MPOWA:CreateSave(i)
 		used = false,
 		test = false,
 		cooldown = false,
+		abilityavailable=false,
 		enemyonly = false,
 		stance = false,
 		stanceslot=1,
@@ -122,6 +123,10 @@ function MPOWA:Init()
 
 			if not val["stance"] then
 				self.SAVE[cat]["stance"] = false
+			end
+
+			if not val["abilityavailable"] then
+				self.SAVE[cat]["abilityavailable"] = false
 			end
 
 			if not val["enemyonly"] then

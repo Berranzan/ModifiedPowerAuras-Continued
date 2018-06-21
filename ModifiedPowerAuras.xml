@@ -1271,7 +1271,7 @@
 									</Layer>
 								</Layers>
 							</EditBox>
-							<CheckButton name="$parent_Checkbutton_ShowCooldowns" inherits="MPowa_CheckTemplate">
+							<CheckButton name="$parent_Checkbutton_ShowCooldowns" inherits="MPowa_CheckTemplate" hidden="true">
 								<Anchors>
 									<Anchor point="TOPLEFT" relativeTo="$parent_Editbox" relativePoint="BOTTOMLEFT">
 										<Offset x="-10" y="-77" />
@@ -1283,19 +1283,34 @@
 										getglobal(this:GetName().."Text"):SetText(MPOWA_CHECKBUTTON_SHOWCOOLDOWN)
 									</OnLoad>
 									<OnClick>
-                    if not MPOWA.SAVE[MPOWA.CurEdit]["cooldown"] then
-                      MPOWA.NeedUpdate[MPOWA.CurEdit] = true
+                  </OnClick>
+								</Scripts>
+							</CheckButton>
+              <CheckButton name="$parent_Checkbutton_AbilityAvailable" inherits="MPowa_CheckTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="$parent_Editbox" relativePoint="BOTTOMLEFT">
+                    <Offset x="-10" y="-77" />
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnLoad>
+                    this.tooltipText = MPOWA_CHECKBUTTON_ABILITY_AVAILABLE_TOOLTIP
+                    getglobal(this:GetName().."Text"):SetText(MPOWA_CHECKBUTTON_ABILITY_AVAILABLE)
+                  </OnLoad>
+                  <OnClick>
+                    if not MPOWA.SAVE[MPOWA.CurEdit]["abilityavailable"] then
+                    MPOWA.NeedUpdate[MPOWA.CurEdit] = true
                     else
                     if not MPOWA.SAVE[MPOWA.CurEdit]["inverse"] then
-                      MPOWA.NeedUpdate[MPOWA.CurEdit] = false
+                    MPOWA.NeedUpdate[MPOWA.CurEdit] = false
                     end
                     MPOWA.active[MPOWA.CurEdit] = false
                     MPOWA.frames[MPOWA.CurEdit][1]:Hide()
                     end
-                    MPOWA:AutoUpdateCheckbutton(this,"cooldown")
+                    MPOWA:AbilityAvailableCheckbutton(this,"abilityavailable")
                   </OnClick>
-								</Scripts>
-							</CheckButton>
+                </Scripts>
+              </CheckButton>
               <CheckButton name="$parent_Checkbutton_EnemyOnly" inherits="MPowa_CheckTemplate">
                 <Anchors>
                   <Anchor point="TOPLEFT" relativeTo="$parent_Checkbutton_ShowCooldowns" relativePoint="BOTTOMLEFT">
