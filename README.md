@@ -8,7 +8,7 @@ from @Geigerkind
 
 Many thanks to original developer of Power Auras as well as the creator of Modified Power Auras.
 
-ModifedPowerAuras (Mpowa) is a great World of Warcraft (WoW) addon, intended to show icons and auras
+ModifedPowerAuras (Mpowa) is a great vanilla World of Warcraft (WoW) addon, intended to show icons and auras
 on screen when certain conditions are met, IE buff or debuff present, ability is on cooldown and so on, 
 but it falls short in one important aspect: showing aura when action or spell is available, in range 
 and ready to be casted/performed.
@@ -34,8 +34,8 @@ functionality like range clipping and making sure that other cast requirements a
 that you have Seal active) and you also need to check "Invert" button to show when Ability is ready as 
 opposed to not ready.~~
 
-I also made some changes in UI inconsistencies, like need to do double negative (Invert snd On cooldow) to 
-show when ability is ready to be performed, which is now simply an Ability available checkbox. There is also 
+I also made some changes in UI inconsistencies, like need to do double negative (Invert and On cooldown) to 
+show when ability is ready to be performed, which is now simply an "Ability available" checkbox. There is also 
 a checkbox "Enemy only", which will ensure that you are targeting an enemy in order to cast harmful spells, 
 or you can uncheck this if you are using Mpowa for beneficial spells, like Power Word: Shield for example. The
 last addition is "Auto Update" check box, which will be checked automatically when you check "Ability available" 
