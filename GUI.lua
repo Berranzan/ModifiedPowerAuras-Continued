@@ -1051,9 +1051,13 @@ function MPOWA:AbilityAvailableCheckbutton(obj,var)
 		if self.SAVE[self.CurEdit][var] then
 			MPowa_ConfigFrame_Container_1_2_Checkbutton_ShowCooldowns:SetChecked(true)
 			self.SAVE[self.CurEdit]["cooldown"]=true
+			MPowa_ConfigFrame_Container_1_2_Checkbutton_AutoUpdate:SetChecked(true)
+			self.SAVE[self.CurEdit]["autoupdate"]=true
 		else
 			MPowa_ConfigFrame_Container_1_2_Checkbutton_ShowCooldowns:SetChecked(false)
 			self.SAVE[self.CurEdit]["cooldown"]=false
+			MPowa_ConfigFrame_Container_1_2_Checkbutton_AutoUpdate:SetChecked(false)
+			self.SAVE[self.CurEdit]["autoupdate"]=false
 		end
 	end
 	self:ApplyConfig(self.CurEdit)
