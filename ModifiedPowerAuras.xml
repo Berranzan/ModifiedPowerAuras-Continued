@@ -1341,6 +1341,15 @@
                     this.var = "stance"
                   </OnLoad>
                   <OnClick>
+                    if not MPOWA.SAVE[MPOWA.CurEdit]["stance"] then
+                    MPOWA.NeedUpdate[MPOWA.CurEdit] = true
+                    else
+                    if not MPOWA.SAVE[MPOWA.CurEdit]["inverse"] then
+                    MPOWA.NeedUpdate[MPOWA.CurEdit] = false
+                    end
+                    MPOWA.active[MPOWA.CurEdit] = false
+                    MPOWA.frames[MPOWA.CurEdit][1]:Hide()
+                    end
                     MPOWA:StanceCheckbutton(this,"stance")
                     MPOWA:StanceSlot(this)
                   </OnClick>

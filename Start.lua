@@ -312,7 +312,9 @@ function MPOWA:StanceSlot(val)
 		for i=1,6 do
 			local icon, name, active, castable = GetShapeshiftFormInfo(i);
 			if active then
-				MPOWA.SAVE[MPOWA.CurEdit]["stanceslot"] = i;
+				MPOWA.SAVE[MPOWA.CurEdit]["stanceslot"] = i
+				MPOWA.SAVE[MPOWA.CurEdit]["buffname"] = name
+				MPowa_ConfigFrame_Container_1_2_Editbox:SetText(name)
 				--DEFAULT_CHAT_FRAME:AddMessage("Action Bar= " .. MPOWA.SAVE[MPOWA.CurEdit]["stanceslot"])
 			end
 		end
