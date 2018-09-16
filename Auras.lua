@@ -121,13 +121,29 @@ function MPOWA:OnUpdate(elapsed)
 										--]]
 									--end
 								else
-									if inRange == 0 or not isUsable then
+									--DEFAULT_CHAT_FRAME:AddMessage("Out of Range" .. inRange)
+									--[[]
+									if inRange == 0 or not isUsable or duration > 0 then
 										if not path["inverse"] then
 											self:FHide(cat)
 										else
 											self:FShow(cat)
 										end
 										--DEFAULT_CHAT_FRAME:AddMessage("Not available")
+									end
+									--]]
+									if not path["inverse"] then
+										if inRange == 0  or not isUsable then
+											self:FHide(cat)
+										end
+									else
+										if duration > 0 then
+											self:FShow(cat)
+										else
+											if not (inRange == 0) and isUsable then
+												self:FHide(cat)
+											end
+										end
 									end
 								end
 								--[[
@@ -184,7 +200,11 @@ function MPOWA:OnUpdate(elapsed)
 					end
 				else
 					if path["inverse"] or path["cooldown"] then
-						self:FHide(cat)
+						if not path["abilityavailable"]then
+							self:FHide(cat)
+						else
+							self:FShow(cat)
+						end
 					end
 				end
 			end
